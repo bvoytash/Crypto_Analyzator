@@ -28,7 +28,9 @@
 
         <div id="results" class="mt-5">
             <h2 class="text-center">Results</h2>
-            
+             <div class="text-center mt-4">
+            <button id="refresh-button" class="btn btn-secondary" style="background-color: red; border-color: red;">Clear</button>
+            </div>
             <!-- Diagram Section -->
             <div id="plot-container" class="mt-4 text-center">
                 <!-- The plot will be displayed here -->
@@ -79,6 +81,9 @@
                 },
             });
         });
+         $("#refresh-button").on("click", function () {
+        location.reload();
+    });
     </script>
 </body>
 </html>
