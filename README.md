@@ -12,7 +12,9 @@ Import a content from Telegram chat group in .JSON format and get the most influ
 - **C++ Build Tools (required for Windows only)**: [Download Visual C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
 
 ## 1. Clone the Repository and Navigate to the Folder
+```
 git clone https://github.com/bvoytash/Crypto_Analyzator.git && cd ./Crypto_Analyzator/
+```
 
 ## 2. Create a Virtual Environment
 - **Linux and macOS**:
@@ -36,14 +38,24 @@ git clone https://github.com/bvoytash/Crypto_Analyzator.git && cd ./Crypto_Analy
     ```
 
 ## 4. Install Dependencies
+```
 pip install -r requirements.txt
+```
 
 ## 5. Run the Project
 
 ### 5.1 If You Prefer the Flask Server:
+```
 export FLASK_APP=main.py
+```
+```
 export FLASK_ENV=development # Optional for enabling debug mode
+```
+```
 flask run
+```
 
 ### 5.2 If You Prefer Running the File Directly:
+```
 python main.py
+```
