@@ -9,7 +9,6 @@ Import a content from Telegram chat group in .JSON format and get the most influ
 
 ## 0. Requirements
 - **Python 3.10**: [Download Python 3.10](https://www.python.org/downloads/release/python-3100/)
-- **C++ Build Tools (required for Windows only)**: [Download Visual C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
 
 ## 1. Clone the Repository and Navigate to the Folder
 ```
@@ -46,13 +45,10 @@ pip install -r requirements.txt
 
 ### 5.1 If You Prefer the Flask Server:
 ```
-export FLASK_APP=main.py
-```
-```
 export FLASK_ENV=development # Optional for enabling debug mode
 ```
 ```
-flask run
+export FLASK_APP=main.py && flask run
 ```
 
 ### 5.2 If You Prefer Running the File Directly:
