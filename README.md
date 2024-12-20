@@ -55,3 +55,8 @@ export FLASK_APP=main.py && flask run
 ```
 python main.py
 ```
+
+## 6. Run the Tests
+```
+python -m unittest test_main.py
+```
