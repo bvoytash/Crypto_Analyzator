@@ -41,6 +41,7 @@ def process_file(file_path, end_date, most_common_count):
     df = pd.DataFrame(most_common, columns=["Coin", "Count"])
 
     # Generate plot
+    os.makedirs(app.config["PLOT_FOLDER"], exist_ok=True)
     plot_path = os.path.join(app.config["PLOT_FOLDER"], "plot.png")
     plt.figure(figsize=(12, 6))
     plt.bar(df["Coin"], df["Count"], color="skyblue", edgecolor="black")
