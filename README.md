@@ -42,16 +42,6 @@ pip install -r requirements.txt
 ```
 
 ## 5. Run the Project
-
-### 5.1 If You Prefer the Flask Server:
-```
-export FLASK_ENV=development # Optional for enabling debug mode
-```
-```
-export FLASK_APP=main.py && flask run
-```
-
-### 5.2 If You Prefer Running the File Directly:
 ```
 python main.py
 ```
