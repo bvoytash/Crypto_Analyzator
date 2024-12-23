@@ -6,7 +6,6 @@ from io import BytesIO
 from datetime import datetime
 from main import app, find_words, process_file
 
-
 class FlaskAppTests(unittest.TestCase):
     def setUp(self):
         """Set up the Flask application for testing."""
@@ -19,6 +18,9 @@ class FlaskAppTests(unittest.TestCase):
         expected = ["#Bitcoin", "$Ethereum"]
         result = find_words(text)
         self.assertEqual(result, expected)
+
+        # Test with empty string
+        self.assertEqual(find_words(""), [])
 
     def test_process_file(self):
         """Test process_file function with a sample JSON input."""
@@ -46,6 +48,35 @@ class FlaskAppTests(unittest.TestCase):
 
         # Clean up test file
         os.remove("test.json")
+
+        # Test with empty JSON file
+        with open("empty_test.json", "w") as f:
+            json.dump({"messages": []}, f)
+
+        df, plot_path = process_file("empty_test.json", end_date, most_common_count)
+        self.assertEqual(len(df), 0)
+        os.remove("empty_test.json")
+
+        # Test with future end date
+        end_date = datetime.strptime("2025-01-01", "%Y-%m-%d")
+        with open("test.json", "w") as f:
+            json.dump(sample_data, f)
+
+        df, plot_path = process_file("test.json", end_date, most_common_count)
+        self.assertEqual(len(df), 0)
+        os.remove("test.json")
+
+        # Test with non-existent file
+        with self.assertRaises(FileNotFoundError):
+            process_file("non_existent.json", end_date, most_common_count)
+
+        # Test with malformed JSON file
+        with open("malformed_test.json", "w") as f:
+            f.write("{malformed json}")
+
+        with self.assertRaises(json.JSONDecodeError):
+            process_file("malformed_test.json", end_date, most_common_count)
+        os.remove("malformed_test.json")
 
     def test_index_post(self):
         """Test the index route for POST requests."""
@@ -76,7 +107,6 @@ class FlaskAppTests(unittest.TestCase):
             shutil.rmtree(app.config["UPLOAD_FOLDER"])
         if os.path.exists(app.config["PLOT_FOLDER"]):
             shutil.rmtree(app.config["PLOT_FOLDER"])
-
 
 if __name__ == "__main__":
     unittest.main()
