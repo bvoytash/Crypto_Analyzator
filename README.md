@@ -39,7 +39,7 @@ git clone https://github.com/bvoytash/Crypto_Analyzator.git && cd ./Crypto_Analy
     ```
 - **Windows**:
     ```
-    source venv/Scripts/activate
+    source .venv/Scripts/activate
     ```
 
 ## 4. Install Dependencies
