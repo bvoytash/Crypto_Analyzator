@@ -6,7 +6,7 @@ if [ $? -ne 0 ]; then
     echo "Python is not installed. Please download and install Python 3.10 from:"
     echo "https://www.python.org/downloads/release/python-3100/"
     echo "Make sure to check 'Add Python to PATH' during installation."
-    read -p "Press enter to exit..."
+    read -p "Press enter to exit."
     exit 1
 fi
 
@@ -21,11 +21,11 @@ pip install -r requirements.txt
 # Ask the user if they want to run the application
 read -p "Setup complete. Do you want to run the application? (y/n): " runApp
 
-if [[ "$runApp" == "y" || "$runApp" == "Y" ]]; then
-    python main.py &
+if [[ "$runApp" == [yY] ]]; then
+    python3 main.py &
     echo "Server has been started on http://127.0.0.1:8080"
 else
     echo "Exiting without running the application."
 fi
 
-read -p "Press enter to exit..."
+read -p "Press enter to exit."

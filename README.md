@@ -24,18 +24,18 @@ git clone https://github.com/bvoytash/Crypto_Analyzator.git && cd ./Crypto_Analy
 ## 2. Create a Virtual Environment
 - **Linux and macOS**:
     ```
-    python3 -m venv venv
+    python3 -m venv .venv
     ```
 - **Windows**:
     ```
-    python -m venv venv
+    python -m venv .venv
     ```
 
 ## 3. Activate the Virtual Environment
 **Assuming you are using Bash:**
 - **Linux and macOS**:
     ```
-    source venv/bin/activate
+    source .venv/bin/activate
     ```
 - **Windows**:
     ```

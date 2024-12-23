@@ -22,7 +22,7 @@ REM Ask the user if they want to run the application
 set /p runApp="Setup complete. Do you want to run the application? (y/n): "
 
 IF /I "%runApp%"=="y" (
-    python main.py &
+    start python main.py
     echo Server has been started on http://127.0.0.1:8080
 ) ELSE (
     echo Exiting without running the application.
