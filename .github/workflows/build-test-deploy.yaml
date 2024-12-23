@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build and Test then Deploy
 
 on:
   push:
@@ -38,13 +38,11 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    if: github.ref == 'refs/heads/main'
     needs: build-and-test
-
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Deploy to production
         uses: JorgeLNJunior/render-deploy@v1.4.4
-
         with:
           service_id: ${{ secrets.RENDER_DEPLOY_HOOK }}
           api_key: ${{ secrets.RENDER_API_KEY }}
