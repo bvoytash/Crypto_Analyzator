@@ -6,6 +6,7 @@ from collections import Counter
 import pandas as pd
 from flask import Flask, request, render_template, jsonify
 import matplotlib.pyplot as plt
+from waitress import serve
 
 app = Flask(__name__)
 
@@ -84,4 +85,6 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Optional for enabling debug mode
+    # app.run(debug=True)
+    serve(app, host="0.0.0.0", port=8080)
