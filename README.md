@@ -9,7 +9,7 @@ Import a content from Telegram chat group in .JSON format and get the most influ
 
 ## 0. Requirements
 - **Python 3.10**: [Download Python 3.10](https://www.python.org/downloads/release/python-3100/)
-- **Easy Setup for Windows**: [Download Easy_Setup_Windows]()
+- **Easy Setup for Windows**: [Download Easy_Setup_Windows](https://github.com/bvoytash/Crypto_Analyzator/blob/cosmetic_improvements/Easy_Setup_Windows.bat)
 
 ## 1. Clone the Repository and Navigate to the Folder
 ```
