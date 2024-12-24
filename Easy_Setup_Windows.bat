@@ -1,31 +1,52 @@
 @echo off
+setlocal
 
-REM Check if Python is installed
-python --version >nul 2>&1
-IF %ERRORLEVEL% NEQ 0 (
-    echo Python is not installed. Please download and install Python 3.10 from:
-    echo https://www.python.org/downloads/release/python-3100/
-    echo Make sure to check "Add Python to PATH" during installation.
-    pause
-    exit /b
+REM Check for Python 3.10.0
+python --version 2>nul | find "Python 3.10.0" >nul
+if %errorlevel% neq 0 (
+    echo Python 3.10.0 is not installed. Installing...
+
+    REM Download the Python 3.10.0 installer
+    set "PYTHON_INSTALLER=https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe"
+    set "INSTALLER_NAME=python-3.10.0-amd64.exe"
+
+    REM Download the installer
+    powershell -Command "Invoke-WebRequest -Uri %PYTHON_INSTALLER% -OutFile %INSTALLER_NAME%"
+
+    REM Install Python silently and add to PATH
+    start /wait msiexec /i %INSTALLER_NAME% /quiet InstallAllUsers=1 PrependPath=1
+
+    REM Clean up the installer file
+    del %INSTALLER_NAME%
+) else (
+    echo Python 3.10.0 is already installed.
 )
 
-REM Proceed with cloning the repository and setting up the environment
+REM Clone the repository
 git clone https://github.com/bvoytash/Crypto_Analyzator.git
 cd Crypto_Analyzator
+
+REM Create a virtual environment
 python -m venv .venv
-call .venv\Scripts\activate
+
+REM Activate the virtual environment
+call .venv\Scripts\activate.bat
+
+REM Upgrade pip
 python -m pip install --upgrade pip
+
+REM Install dependencies
 pip install -r requirements.txt
 
-REM Ask the user if they want to run the application
-set /p runApp="Setup complete. Do you want to run the application? (y/n): "
-
-IF /I "%runApp%"=="y" (
-    start python main.py
+REM Ask to run the app
+set /p runApp="Setup complete. Do you want to run the app? (y/n): "
+if /i "%runApp%"=="y" (
+    start cmd /k "python main.py"
     echo Server has been started on http://127.0.0.1:8080
-) ELSE (
+) else (
     echo Exiting without running the application.
 )
 
 pause
+
+endlocal
