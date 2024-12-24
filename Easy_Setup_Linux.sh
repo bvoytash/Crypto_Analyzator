@@ -10,6 +10,11 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+# Update package list and install necessary packages
+apt update
+apt upgrade -y 
+apt install -y libssl-dev libffi-dev python3-venv python3-dev build-essential
+
 # Proceed with cloning the repository and setting up the environment
 git clone https://github.com/bvoytash/Crypto_Analyzator.git
 cd Crypto_Analyzator || exit
@@ -22,7 +27,7 @@ pip install -r requirements.txt
 read -p "Setup complete. Do you want to run the application? (y/n): " runApp
 
 if [[ "$runApp" == [yY] ]]; then
-    python3 main.py &
+    gnome-terminal -- bash -c "python3 main.py; exec bash"
     echo "Server has been started on http://127.0.0.1:8080"
 else
     echo "Exiting without running the application."
