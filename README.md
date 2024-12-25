@@ -13,7 +13,7 @@ Import a content from Telegram chat group in .JSON format and get the most influ
 - **Python 3.10**: [Download Python 3.10](https://www.python.org/downloads/release/python-3100/)
 
 ## 0. Easy Setup
-- **Easy Setup for Windows - Download and Run the File**: [Download Easy_Setup_Windows](Easy_Setup_Windows.bat)
+- **Easy Setup for Windows - Download and Run the File**: [Download Easy_Setup_Windows](Easy_Setup_Windows.ps1)
 - **Easy Setup for Linux - Download and Run the File**: [Download Easy_Setup_Linux](Easy_Setup_Linux.sh)
 
 ## 1. Clone the Repository and Navigate to the Folder
