@@ -1,6 +1,6 @@
-# Check for Python 3.10.0
+# Check for Python 3.10.x
 $pythonVersion = & python --version 2>&1
-if ($pythonVersion -notmatch "Python 3\.10\.0") {
+if ($pythonVersion -notmatch "Python 3\.10\.\d+") {
     Write-Host "Python 3.10.0 is not installed. Downloading..."
 
     # Define installer URL and name
@@ -21,7 +21,7 @@ if ($pythonVersion -notmatch "Python 3\.10\.0") {
     Remove-Item $installerName
     Write-Host "Python 3.10.0 is installed."
 } else {
-    Write-Host "Python 3.10.0 is already installed."
+    Write-Host "Python 3.10.x is already installed."
 }
 
 # Clone the repository
