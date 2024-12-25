@@ -12,7 +12,7 @@ else
     echo "Python 3.10.x is already installed."
 fi
 
-# Install / Updates essentials
+# Install essentials
 sudo apt-get install -y build-essential libssl-dev libffi-dev python3.10-dev python3.10-venv
 
 # Clone the repository
