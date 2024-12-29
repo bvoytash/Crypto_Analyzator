@@ -1,7 +1,7 @@
 # Check for Python 3.10.x
 $pythonVersion = & python --version 2>&1
-if ($pythonVersion -notmatch "Python 3\.10\.\d+") {
-    Write-Host "Python 3.10.0 is not installed. Downloading..."
+if ($pythonVersion -notmatch "Python 3\.") {
+    Write-Host "Python 3 is not installed. Downloading..."
 
     # Define installer URL and name
     $pythonInstallerUrl = "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe"
@@ -21,7 +21,7 @@ if ($pythonVersion -notmatch "Python 3\.10\.\d+") {
     Remove-Item $installerName
     Write-Host "Python 3.10.0 is installed."
 } else {
-    Write-Host "Python 3.10.x is already installed."
+    Write-Host "Python 3 is already installed."
 }
 
 # Clone the repository
