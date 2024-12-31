@@ -1,25 +1,15 @@
-# Check for Python 3.10.x
+# Check for Python 3
 $pythonVersion = & python --version 2>&1
 if ($pythonVersion -notmatch "Python 3\.") {
-    Write-Host "Python 3 is not installed. Downloading..."
+    Write-Host "Python 3 is not installed. Installing..."
 
-    # Define installer URL and name
-    $pythonInstallerUrl = "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe"
-    $installerName = "python-3.10.0-amd64.exe"
-
-    # Download the installer
-    Invoke-WebRequest -Uri $pythonInstallerUrl -OutFile $installerName
-
-    # Install Python silently and add to PATH
-    Write-Host "Installing..."
-    Start-Process -FilePath "$installerName" -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
+    # Install Python
+    winget install -e --id Python.Python.3.10 --scope machine
 
     # Refresh PATH variable in current session
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")  
 
-    # Clean up the installer file
-    Remove-Item $installerName
-    Write-Host "Python 3.10.0 is installed."
+    Write-Host "Python 3.10 is installed."
 } else {
     Write-Host "Python 3 is already installed."
 }
